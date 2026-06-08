@@ -84,7 +84,14 @@ const payNow = async () => {
       <div className="grid">
 
         {packages.map((pkg, i) => (
-          <div className="card" key={i}>
+          <div className="hero-card">
+  <h2>Fast. Secure. Unlimited WiFi</h2>
+  <p>
+    Pay via M-Pesa and get connected instantly.
+  </p>
+</div>
+      
+      <div className="card" key={i}>
 
   <div>
     <h3>{pkg.name}</h3>
