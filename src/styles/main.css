@@ -309,3 +309,28 @@ body{
     padding:8px;
   }
 }
+.hero-card{
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #3b82f6,
+      #06b6d4
+    );
+
+  color:white;
+  padding:22px;
+  border-radius:20px;
+  margin-bottom:20px;
+  box-shadow:
+    0 15px 40px rgba(37,99,235,.25);
+}
+
+.hero-card h2{
+  font-size:1.4rem;
+  margin-bottom:8px;
+}
+
+.hero-card p{
+  opacity:.9;
+}
