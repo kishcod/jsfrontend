@@ -84,11 +84,24 @@ const payNow = async () => {
       <div className="grid">
 
         {packages.map((pkg, i) => (
-          <div className="card" key={i} onClick={() => openModal(pkg)}>
-            <h3>{pkg.name}</h3>
-            <div className="price">{pkg.price} BOB</div>
-            <div className="badge">⚡ Instant Activation</div>
-          </div>
+          <div className="card" key={i}>
+  <h3>{pkg.name}</h3>
+
+  <div className="price">
+    KES {pkg.price}
+  </div>
+
+  <div className="badge">
+    ⚡ Instant Activation
+  </div>
+
+  <button
+    className="buy-btn"
+    onClick={() => openModal(pkg)}
+  >
+    Buy Package
+  </button>
+</div>
         ))}
 
       </div>
