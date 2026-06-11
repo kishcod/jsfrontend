@@ -1,16 +1,27 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 
 export default function Login() {
 
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const login = async () => {
     try {
 
+      setLoading(true);
       setError("");
+
+      if (!username || !password) {
+        setError("Please fill all fields");
+        setLoading(false);
+        return;
+      }
 
       const res = await API.post("/api/admin/login", {
         username,
@@ -20,7 +31,7 @@ export default function Login() {
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);
 
-        window.location = "/admin/dashboard";
+        navigate("/admin/dashboard");
       } else {
         setError("Invalid login credentials");
       }
@@ -30,6 +41,8 @@ export default function Login() {
         err.response?.data?.message || "Login failed"
       );
     }
+
+    setLoading(false);
   };
 
   return (
@@ -56,8 +69,8 @@ export default function Login() {
           </p>
         )}
 
-        <button onClick={login}>
-          Login
+        <button onClick={login} disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
         </button>
 
       </div>
