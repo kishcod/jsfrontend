@@ -6,19 +6,19 @@ export default function Sidebar() {
 
       <h2>Josma Admin</h2>
 
-      <Link to="/dashboard">Dashboard</Link>
+      <Link to="/admin/dashboard">Dashboard</Link>
 
-      <Link to="/payments">Payments</Link>
+      <Link to="/admin/payments">Payments</Link>
 
-      <Link to="/users">Users</Link>
+      <Link to="/admin/users">Users</Link>
 
-      <Link to="/packages">Packages</Link>
+      <Link to="/admin/packages">Packages</Link>
 
-      <Link to="/router">Router</Link>
+      <Link to="/admin/router">Router</Link>
 
-      <Link to="/vouchers">Vouchers</Link>
+      <Link to="/admin/vouchers">Vouchers</Link>
 
-      <Link to="/settings">Settings</Link>
+      <Link to="/admin/settings">Settings</Link>
 
     </div>
   );
