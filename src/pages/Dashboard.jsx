@@ -15,19 +15,26 @@ export default function Dashboard() {
   });
 
   const [chartData, setChartData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
+        setError("");
+
         const res = await API.get("/api/admin/dashboard");
 
+        const data = res?.data || {};
+
         setStats({
-          revenue: res.data.revenue,
-          users: res.data.users,
-          totalPayments: res.data.totalPayments
+          revenue: data.revenue || 0,
+          users: data.users || 0,
+          totalPayments: data.totalPayments || 0
         });
 
-        // mock chart (replace later with real DB data)
+        // temporary chart data (replace later with real DB stats)
         setChartData([
           { date: "Mon", revenue: 500 },
           { date: "Tue", revenue: 800 },
@@ -38,6 +45,9 @@ export default function Dashboard() {
 
       } catch (err) {
         console.log(err);
+        setError("Failed to load dashboard data");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -53,33 +63,41 @@ export default function Dashboard() {
 
         <Navbar />
 
-        <div className="stats">
+        {loading ? (
+          <h3 style={{ padding: 20 }}>Loading dashboard...</h3>
+        ) : error ? (
+          <h3 style={{ color: "red", padding: 20 }}>{error}</h3>
+        ) : (
+          <>
+            <div className="stats">
 
-          <StatCard
-            title="Revenue"
-            value={`KES ${stats.revenue}`}
-          />
+              <StatCard
+                title="Revenue"
+                value={`KES ${stats.revenue}`}
+              />
 
-          <StatCard
-            title="Users"
-            value={stats.users}
-          />
+              <StatCard
+                title="Users"
+                value={stats.users}
+              />
 
-          <StatCard
-            title="Payments"
-            value={stats.totalPayments}
-          />
+              <StatCard
+                title="Payments"
+                value={stats.totalPayments}
+              />
 
-          <StatCard
-            title="Router"
-            value="Online"
-          />
+              <StatCard
+                title="Router"
+                value="Online"
+              />
 
-        </div>
+            </div>
 
-        <div className="chartBox">
-          <RevenueChart data={chartData} />
-        </div>
+            <div className="chartBox">
+              <RevenueChart data={chartData} />
+            </div>
+          </>
+        )}
 
       </div>
 
