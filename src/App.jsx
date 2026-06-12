@@ -1,12 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-/* Customer Pages */
+/* =========================
+   PUBLIC (CUSTOMER) PAGES
+========================= */
 import Home from "./pages/Home";
 import Packages from "./pages/Packages";
 import Success from "./pages/Success";
 import Expired from "./pages/Expired";
 
-/* Admin Pages */
+/* =========================
+   ADMIN PAGES
+========================= */
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Payments from "./pages/Payments";
@@ -21,14 +25,16 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* Public Pages */}
+        {/* ================= PUBLIC ROUTES ================= */}
         <Route path="/" element={<Home />} />
         <Route path="/packages" element={<Packages />} />
         <Route path="/success" element={<Success />} />
         <Route path="/expired" element={<Expired />} />
 
-        {/* Admin Pages */}
+        {/* ================= ADMIN AUTH ================= */}
         <Route path="/admin" element={<Login />} />
+
+        {/* ================= ADMIN DASHBOARD ================= */}
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/payments" element={<Payments />} />
         <Route path="/admin/users" element={<Users />} />
