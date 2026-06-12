@@ -254,3 +254,22 @@ body{
     padding: 12px;
   }
 }
+.chart-container {
+  background: #111827;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.chart-title {
+  color: #e5e7eb;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .chart-container {
+    padding: 12px;
+  }
+}
