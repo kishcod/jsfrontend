@@ -8,7 +8,7 @@ import {
   CartesianGrid
 } from "recharts";
 
-export default function RevenueChart({ data }) {
+export default function RevenueChart({ data = [] }) {
   return (
     <div className="chart-container">
 
@@ -16,7 +16,7 @@ export default function RevenueChart({ data }) {
 
       <ResponsiveContainer width="100%" height={320}>
 
-        <LineChart data={data}>
+        <LineChart data={Array.isArray(data) ? data : []}>
 
           <CartesianGrid
             strokeDasharray="3 3"
@@ -28,9 +28,7 @@ export default function RevenueChart({ data }) {
             stroke="#94a3b8"
           />
 
-          <YAxis
-            stroke="#94a3b8"
-          />
+          <YAxis stroke="#94a3b8" />
 
           <Tooltip
             contentStyle={{
