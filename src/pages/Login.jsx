@@ -1,11 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import API from "../services/api";
+import "../styles/admin.css";
 
 export default function Login() {
-
-  const navigate = useNavigate();
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -13,68 +10,65 @@ export default function Login() {
 
   const login = async () => {
     try {
-
       setLoading(true);
       setError("");
 
-      if (!username || !password) {
-        setError("Please fill all fields");
-        setLoading(false);
-        return;
-      }
-
       const res = await API.post("/api/admin/login", {
         username,
-        password
+        password,
       });
 
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);
-
-        navigate("/admin/dashboard");
+        window.location.href = "/admin/dashboard";
       } else {
-        setError("Invalid login credentials");
+        setError("Invalid credentials");
       }
-
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Login failed"
-      );
+      setError(err.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
-    <div className="login">
+    <div className="login-page">
 
-      <div className="login-card">
+      <div className="login-box">
 
-        <h2>Admin Login</h2>
+        <div className="login-header">
+          <h1>Josma Networks</h1>
+          <p>Admin Portal Login</p>
+        </div>
+
+        {error && <div className="error-box">{error}</div>}
 
         <input
+          className="login-input"
           placeholder="Username"
           onChange={(e) => setUsername(e.target.value)}
         />
 
         <input
+          className="login-input"
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        {error && (
-          <p style={{ color: "red", fontSize: "12px" }}>
-            {error}
-          </p>
-        )}
-
-        <button onClick={login} disabled={loading}>
+        <button
+          className="login-btn"
+          onClick={login}
+          disabled={loading}
+        >
           {loading ? "Logging in..." : "Login"}
         </button>
 
-      </div>
+        <p className="login-footer">
+          Secure Admin Access
+        </p>
 
+      </div>
     </div>
   );
 }
