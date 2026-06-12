@@ -273,3 +273,93 @@ body{
     padding: 12px;
   }
 }
+
+.card {
+  background: #111827;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: white;
+}
+
+button {
+  background: #3b82f6;
+  padding: 10px;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2563eb;
+}
+.card {
+  background: #111827;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+table {
+  color: white;
+  width: 100%;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #1f2937;
+}
+
+th {
+  text-align: left;
+  color: #94a3b8;
+}
+.card {
+  background: #111827;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+select, input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: white;
+  border-radius: 8px;
+}
+
+button {
+  background: #3b82f6;
+  border: none;
+  padding: 10px;
+  color: white;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2563eb;
+}
+
+table {
+  margin-top: 10px;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #1f2937;
+}
